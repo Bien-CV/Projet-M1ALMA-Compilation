@@ -3,13 +3,13 @@
 
 # définition des variables
 CXX = g++
-CXXFLAGS = -Wall -Wextra
+CXXFLAGS = -Wall -Wextra -pedantic
 SOURCES = main.cpp generateur.cpp
 OBJECTS = $(SOURCES:.cpp =.o)
 
 # regles
 all: $(OBJECTS)
-	$(CXX) -o compile $^
+	$(CXX) -o compile $^ $(CXXFLAGS)
 
 %.o: %.cpp
 	$(CXX) -c $< $(CXXFLAGS)
