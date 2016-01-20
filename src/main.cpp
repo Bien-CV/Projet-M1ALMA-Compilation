@@ -16,21 +16,27 @@ void ImprimeArbre(Node * p, int prof) {
 			case CONC: {
 				Conc* pconc = (Conc*)p;
 				cout << "> conc" << endl;
-				
 				ImprimeArbre(pconc->left, prof+1);
 				ImprimeArbre(pconc->right, prof+1);
 			}
 				break;
 			case UNION: {
-				cout << "lala" <<endl;
+				Union* punion = (Union*)p;
+				cout << "> union" << endl;
+				ImprimeArbre(punion->left, prof+1);
+				ImprimeArbre(punion->right, prof+1);
 			}
 				break;
 			case STAR: {
-				cout << "lala" <<endl;
+				Star* pstar = (Star*)p;
+				cout << "> star" << endl;
+				ImprimeArbre(pstar->stare, prof+1);
 			}
 				break;
 			case UN: {
-				cout << "lala" <<endl;
+				Un* pun = (Un*)p;
+				cout << "> un" << endl;
+				ImprimeArbre(pun->une, prof+1);
 			}
 				break;
 			case ATOM: {
