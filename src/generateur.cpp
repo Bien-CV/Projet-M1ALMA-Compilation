@@ -8,7 +8,7 @@ Conc* GenConc(Node* left, Node* right) {
 	p_conc->classe = CONC;
 	return p_conc;
 }
-/*
+
 Union* GenUnion(Node* left, Node* right) {
 	Union* p_union = new Union();
 
@@ -32,7 +32,7 @@ Un* GenUn(Node* une) {
 	p_un ->classe = UN;
 	return p_un ;
 }
-*/
+
 Atom* GenAtom(int code, int action, AtomType type) {
 	Atom* p_atom = new Atom();
 
