@@ -8,6 +8,6 @@ Union* GenUnion(Node* left, Node* right);
 Star* GenStar(Node* stare);
 Un* GenUn(Node* une);
 Atom* GenAtom(int code, int action, AtomType type);
-Node* GenForet();
+Node** GenForet();
 
 #endif //GENERATEUR_HPP

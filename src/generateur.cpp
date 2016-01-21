@@ -43,9 +43,9 @@ Atom* GenAtom(int code, int action, AtomType type) {
 	return p_atom;
 }
 
-Node* GenForet() {
-	Node* node[5];
-	
+Node** GenForet() {
+	Node** node = new Node*[5];
+
 	node[0] = GenConc(
 		GenStar(
 			GenConc(
@@ -82,5 +82,5 @@ Node* GenForet() {
 						
 	node[4] = GenAtom((int)'F',0,NONTERMINAL);
 	
-	return *node;
+	return node;
 }

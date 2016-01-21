@@ -10,7 +10,7 @@ void ImprimeArbre(Node * p, int prof) {
 	//prof += 1;
 	for (int k = 0; k <= prof; ++k)
 	{
-		cout << "--- " ;
+		cout << "---" ;
 	}
 		switch (p->classe) {
 			case CONC: {
@@ -54,14 +54,15 @@ int main() {
 	//Conc* c = GenConc(GenAtom(1,0, TERMINAL), GenAtom(2,0,TERMINAL));
 	//ImprimeArbre(a);
 	//ImprimeArbre(b);
-	Node* node;
+	Node** node;
 	node = GenForet();
 	//ImprimeArbre(S, 0);
 	//ImprimeArbre(c, 0); //profondeur de 0
 	//Node* E = GenConc(GenAtom(1,0,NONTERMINAL),GenStar(GenConc(GenAtom(2,1,TERMINAL), GenAtom(3,0,NONTERMINAL))));
 	//ImprimeArbre(E, 0);
 for(int i = 0; i < 5; ++i) {
-	ImprimeArbre(node, 0);
+	ImprimeArbre(node[i], 0);
+	cout << "\n";
 }
 	//delete(a);
 	//delete(b);
