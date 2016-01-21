@@ -42,3 +42,45 @@ Atom* GenAtom(int code, int action, AtomType type) {
 	p_atom->classe = ATOM;
 	return p_atom;
 }
+
+Node* GenForet() {
+	Node* node[5];
+	
+	node[0] = GenConc(
+		GenStar(
+			GenConc(
+				GenConc(
+					GenConc(
+						GenAtom((int)'N',0,NONTERMINAL),
+						GenAtom((int)'>',0,TERMINAL)),
+					GenAtom((int)'E',0,NONTERMINAL)),
+				GenAtom((int)',',0,TERMINAL))
+			),
+		GenAtom((int)';',0,TERMINAL));
+	
+	node[1] = GenConc(
+						GenAtom((int)'N',0,NONTERMINAL),
+						GenAtom((int)'>',0,TERMINAL));
+	
+	node[2] = GenConc(
+						GenAtom((int)'T',0,NONTERMINAL),
+						GenStar(
+							GenConc(
+								GenAtom((int)'+',0,TERMINAL),
+								GenAtom((int)'T',0,NONTERMINAL))
+							)
+						);
+							
+	node[3] = GenConc(
+						GenAtom((int)'F',0,NONTERMINAL),
+						GenStar(
+							GenConc(
+								GenAtom((int)'.',0,TERMINAL),
+								GenAtom((int)'F',0,NONTERMINAL))
+							)
+						);
+						
+	node[4] = GenAtom((int)'F',0,NONTERMINAL);
+	
+	return *node;
+}
