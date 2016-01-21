@@ -58,9 +58,9 @@ Node** GenForet() {
 			),
 		GenAtom((int)';',0,TERMINAL));
 	
-	node[1] = GenConc(
-						GenAtom((int)'N',0,NONTERMINAL),
-						GenAtom((int)'>',0,TERMINAL));
+	node[1] = //GenConc(
+						GenAtom((int)'N',0,NONTERMINAL);//,
+						//GenAtom((int)'>',0,TERMINAL));
 	
 	node[2] = GenConc(
 						GenAtom((int)'T',0,NONTERMINAL),
@@ -80,7 +80,45 @@ Node** GenForet() {
 							)
 						);
 						
-	node[4] = GenAtom((int)'F',0,NONTERMINAL);
+	node[4] = GenUnion(
+				GenUnion(
+					GenUnion(
+						GenUnion(
+							GenAtom((int)'N',0,NONTERMINAL),
+							GenAtom((int)'e',0,TERMINAL)
+						),
+						GenConc(
+							GenAtom((int)'(',0,TERMINAL),
+							GenConc(
+								GenAtom((int)'E',0,NONTERMINAL),
+								GenAtom((int)')',0,TERMINAL)
+							)
+						)
+					),
+					GenConc(
+						GenAtom((int)'[',0,TERMINAL),
+						GenConc(
+							GenAtom((int)'E',0,NONTERMINAL),
+							GenAtom((int)']',0,TERMINAL)
+						)
+					)
+				),
+				GenConc(
+					GenConc(
+						GenAtom((int)'(',0,TERMINAL),
+						GenAtom((int)'|',0,TERMINAL)
+					),
+					GenConc(
+						GenAtom((int)'E',0,NONTERMINAL),
+						GenConc(
+							GenAtom((int)'|',0,TERMINAL),
+							GenAtom((int)')',0,TERMINAL)
+						)
+					)
+				)
+			);
+
+	//GenAtom((int)'F',0,NONTERMINAL);
 	
 	return node;
 }
