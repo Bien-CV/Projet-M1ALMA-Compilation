@@ -3,8 +3,8 @@
 
 # définition des variables
 CXX = g++
-CXXFLAGS = -Wall -Wextra -pedantic
-SOURCES = main.cpp generateur.cpp
+CXXFLAGS = -Wall -Wextra -pedantic -I./header/
+SOURCES = src/main.cpp src/generateur.cpp
 OBJECTS = $(SOURCES:.cpp =.o)
 
 # regles
@@ -14,9 +14,9 @@ all: $(OBJECTS)
 %.o: %.cpp
 	$(CXX) -c $< $(CXXFLAGS)
 
-generateur.cpp: generateur.hpp typage.hpp
-	@touch generateur.hpp typage.hpp
+src/generateur.cpp: header/generateur.hpp header/typage.hpp
+	@touch header/generateur.hpp header/typage.hpp
 
 # action clean
 clean:
-	-rm *.o compile
+	-rm src/*.o compile

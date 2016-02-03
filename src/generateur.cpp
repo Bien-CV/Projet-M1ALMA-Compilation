@@ -1,5 +1,7 @@
 #include "generateur.hpp"
 
+using namespace std;
+
 Conc* GenConc(Node* left, Node* right) {
 	Conc* p_conc = new Conc();
 
@@ -117,8 +119,46 @@ Node** GenForet() {
 					)
 				)
 			);
-
-	//GenAtom((int)'F',0,NONTERMINAL);
 	
 	return node;
+}
+
+void ImprimeArbre(Node * p, int prof) {
+	for (int k = 0; k <= prof; ++k)
+	{
+		cout << "---" ;
+	}
+		switch (p->classe) {
+			case CONC: {
+				Conc* pconc = (Conc*)p;
+				cout << "> conc" << endl;
+				ImprimeArbre(pconc->left, prof+1);
+				ImprimeArbre(pconc->right, prof+1);
+			}
+				break;
+			case UNION: {
+				Union* punion = (Union*)p;
+				cout << "> union" << endl;
+				ImprimeArbre(punion->left, prof+1);
+				ImprimeArbre(punion->right, prof+1);
+			}
+				break;
+			case STAR: {
+				Star* pstar = (Star*)p;
+				cout << "> star" << endl;
+				ImprimeArbre(pstar->stare, prof+1);
+			}
+				break;
+			case UN: {
+				Un* pun = (Un*)p;
+				cout << "> un" << endl;
+				ImprimeArbre(pun->une, prof+1);
+			}
+				break;
+			case ATOM: {
+				Atom* pa = (Atom*)p;
+				cout << "> " << pa->code << endl;
+			}
+				break;
+		}
 }
