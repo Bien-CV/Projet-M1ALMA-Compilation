@@ -3,8 +3,9 @@
 
 # définition des variables
 CXX = g++
-CXXFLAGS = -Wall -Wextra -pedantic -I./header/
-SOURCES = src/main.cpp src/generateur.cpp
+CXXFLAGS = -Wall -Wextra -pedantic -std=c++11
+#-I./header/
+SOURCES = src/main.cpp src/generateur.cpp src/Scanner.cpp
 OBJECTS = $(SOURCES:.cpp =.o)
 
 # regles
