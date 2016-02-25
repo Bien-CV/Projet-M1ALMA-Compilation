@@ -4,14 +4,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <map>
+#include "typage.hpp"
 
 typedef struct {
 	std::fstream * fs;
+	std::map <std::string, int> tabSymbole;
 } Scanner;
 
 void initScan(Scanner * s, std::string file);
 
-std::string lireMot(Scanner * s);
+Node * lireMot(Scanner * s);
 
 
 

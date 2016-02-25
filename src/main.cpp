@@ -7,61 +7,69 @@
 
 using namespace std;
 
-// bool analyse(Node** G0, Node* p) {
-// 	switch(p->classe) {
-// 		case CONC: {
-// 			if(analyse(p->left)) {
-// 				return analyse(p->right);
-// 			} else {
-// 				return false;
-// 			}
-// 		}
-// 			break;
-// 		case UNION: {
-// 			if(analyse(p->left)) {
-// 				return true;
-// 			} else {
-// 				return analyse(p->right);
-// 			}
-// 		}
-// 			break;
-// 		case STAR: {
-// 			return analyse(p->stare);
-// 		}
-// 			break;
-// 		case UN: {
-// 			return analyse(p->une);
-// 		}
-// 			break;
-// 		case ATOM: {
-// 			switch(p->classe) {
-// 				case TERMINAL: {
-// 					if(p->code == "? a confirmer") { //tabsymb.contains(p->code)
-// 						if(p->action !=0) {
-// 							//G0.action(p->act)
-// 							// scan(string) //?
-// 							return true;
-// 						} else {
-// 							return false;
-// 						}
-// 					}
-// 				}
-// 					break;
-// 				case NONTERMINAL: {
-// 					if( analyse(G0[p->code]) ) { //on choppe la case de G0 contenant l'action a effectuer //if(p->action !=0) {
-// 							//G0.action(p->act)
-// 							return true;
-// 						} 
-// 					} else {
-// 						return false;
-// 					}
-// 				}
-// 					break;
-// 			}
-// 		}
-// 			break;
-// 	}
-// }
+bool analyse(Scanner * s, Node** G0, Node* p) {
+	Node * nextSymbol;
+	switch(p->classe) {
+		case CONC: {
+			Conc* pconc = (Conc*)p;
+			if(analyse(s, G0, pconc->left)) {
+				return analyse(s, G0, pconc->right);
+			} else {
+				return false;
+			}
+		}
+			break;
+		case UNION: {
+			Union* punion = (Union*)p;
+			if(analyse(s, G0, punion->left)) {
+				return true;
+			} else {
+				return analyse(s, G0, punion->right);
+			}
+		}
+			break;
+		case STAR: {
+			Star* pstar = (Star*)p;
+			return analyse(s, G0, pstar->stare);
+		}
+			break;
+		case UN: {
+			Un* pun = (Un*)p;
+			return analyse(s, G0, pun->une);
+		}
+			break;
+		case ATOM: {
+			Atom* pa = (Atom*)p;
+			switch(pa->type) {
+				case TERMINAL: {
+					if(pa->code == 1/* code! */) { //tabsymb.contains(p->code)
+						if(pa->action !=0) {
+							//G0.action(p->act)
+							nextSymbol = lireMot(s);
+
+							return analyse(s, G0,nextSymbol);
+							//return true;
+						} else {
+							return false;
+						}
+					}
+				}
+					break;
+				case NONTERMINAL: {
+					if(analyse(s, G0, G0[pa->code])) { //on choppe la case de G0 contenant l'action a effectuer //if(p->action !=0) {
+							//G0.action(p->act)
+							return true;
+					} else {
+						return false;
+					}
+				}
+					break;
+			}
+		}
+			break;
+	}
+	return false;
+}
 
 
 // string scan(int nb) {
@@ -105,8 +113,8 @@ int main() {
 
     Scanner * scan = new Scanner;
     initScan(scan,"src/gpl.txt");
-    lireMot(scan);
-    lireMot(scan);
+    // lireMot(scan);
+    // lireMot(scan);
 	
 	//cout << scan(0) << " " << scan(3) << endl; 
 
