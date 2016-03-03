@@ -2,8 +2,8 @@
 #include <fstream>
 #include <string>
 
-#include "/comptes/E10A324K/M1info/S2/compil/Projet-M1ALMA-Compilation/header/generateur.hpp"
-#include "/comptes/E10A324K/M1info/S2/compil/Projet-M1ALMA-Compilation/header/Scanner.hpp"
+#include "header/generateur.hpp"
+#include "header/Scanner.hpp"
 
 using namespace std;
 

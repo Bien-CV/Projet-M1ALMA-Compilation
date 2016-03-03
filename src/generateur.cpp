@@ -1,4 +1,4 @@
-#include "/comptes/E10A324K/M1info/S2/compil/Projet-M1ALMA-Compilation/header/generateur.hpp"
+#include "header/generateur.hpp"
 
 using namespace std;
 
