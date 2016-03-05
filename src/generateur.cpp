@@ -1,4 +1,4 @@
-#include "header/generateur.hpp"
+#include "generateur.hpp"
 
 using namespace std;
 
@@ -49,76 +49,68 @@ Node** GenForet() {
 	Node** node = new Node*[5];
 
 	node[0] = GenConc(
-		GenStar(
-			GenConc(
-				GenConc(
-					GenConc(
-						GenAtom((int)'N',0,NONTERMINAL),
-						GenAtom((int)'>',0,TERMINAL)),
-					GenAtom((int)'E',0,NONTERMINAL)),
-				GenAtom((int)',',0,TERMINAL))
-			),
-		GenAtom((int)';',0,TERMINAL));
+					GenStar(
+						GenConc(
+							GenConc(
+								GenConc(
+									GenAtom(1,0,NONTERMINAL),
+									GenAtom(5,0,TERMINAL)),
+								GenAtom(2,0,NONTERMINAL)),
+							GenAtom(10,1,TERMINAL))
+						),
+					GenAtom(9,0,TERMINAL));
 	
-	node[1] = //GenConc(
-						GenAtom((int)'N',0,NONTERMINAL);//,
-						//GenAtom((int)'>',0,TERMINAL));
+	node[1] = GenAtom(18,2,NONTERMINAL);
 	
 	node[2] = GenConc(
-						GenAtom((int)'T',0,NONTERMINAL),
+						GenAtom(3,0,NONTERMINAL),
 						GenStar(
 							GenConc(
-								GenAtom((int)'+',0,TERMINAL),
-								GenAtom((int)'T',0,NONTERMINAL))
+								GenAtom(7,0,TERMINAL),
+								GenAtom(3,3,NONTERMINAL))
 							)
 						);
 							
 	node[3] = GenConc(
-						GenAtom((int)'F',0,NONTERMINAL),
+						GenAtom(4,0,NONTERMINAL),
 						GenStar(
 							GenConc(
-								GenAtom((int)'.',0,TERMINAL),
-								GenAtom((int)'F',0,NONTERMINAL))
+								GenAtom(6,0,TERMINAL),
+								GenAtom(4,4,NONTERMINAL))
 							)
 						);
 						
 	node[4] = GenUnion(
-				GenUnion(
 					GenUnion(
 						GenUnion(
-							GenAtom((int)'N',0,NONTERMINAL),
-							GenAtom((int)'e',0,TERMINAL)
+							GenUnion(
+								GenAtom(18,5,NONTERMINAL),
+								GenAtom(17,5,TERMINAL)
+							),
+							GenConc(
+								GenAtom(11,0,TERMINAL),
+								GenConc(
+									GenAtom(2,0,NONTERMINAL),
+									GenAtom(12,0,TERMINAL)
+								)
+							)
 						),
 						GenConc(
-							GenAtom((int)'(',0,TERMINAL),
+							GenAtom(13,0,TERMINAL),
 							GenConc(
-								GenAtom((int)'E',0,NONTERMINAL),
-								GenAtom((int)')',0,TERMINAL)
+								GenAtom(2,0,NONTERMINAL),
+								GenAtom(14,6,TERMINAL)
 							)
 						)
 					),
 					GenConc(
-						GenAtom((int)'[',0,TERMINAL),
-						GenConc(
-							GenAtom((int)'E',0,NONTERMINAL),
-							GenAtom((int)']',0,TERMINAL)
+						GenAtom(15,0,TERMINAL),
+							GenConc(
+								GenAtom(2,0,NONTERMINAL),
+								GenAtom(16,7,TERMINAL)
+							)
 						)
-					)
-				),
-				GenConc(
-					GenConc(
-						GenAtom((int)'(',0,TERMINAL),
-						GenAtom((int)'|',0,TERMINAL)
-					),
-					GenConc(
-						GenAtom((int)'E',0,NONTERMINAL),
-						GenConc(
-							GenAtom((int)'|',0,TERMINAL),
-							GenAtom((int)')',0,TERMINAL)
-						)
-					)
-				)
-			);
+				);
 	
 	return node;
 }

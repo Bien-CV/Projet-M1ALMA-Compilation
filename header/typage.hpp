@@ -40,11 +40,4 @@ typedef struct : public Node
 	AtomType type;
 } Atom;
 
-typedef struct {
-	int code;
-	int action;
-	AtomType type;
-	string chaine;
-} Instance;
-
 #endif //TYPAGE_HPP
