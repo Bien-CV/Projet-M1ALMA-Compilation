@@ -8,35 +8,6 @@
 
 using namespace std;
 
-// string scan(int nb) {
-
-// 	ifstream file;
-//     file.open ("src/gpl.txt");
-//     string word = "";
-//     char x ;
-//     word.clear();
-
-//     while ((!file.eof()) && (nb > 0)) {
-//         x = file.get();
-//         while ( x != ' ' ) {
-//             word = word + x;
-//             x = file.get();
-//         }
-//         nb--;
-//         word.clear();
-//     }
-//     if(!file.eof()) {
-
-//     	x = file.get();
-//     	while ( x != ' ' ) {
-//             word = word + x;
-//             x = file.get();
-//             cout << x;
-//         }
-//     }
-//     return word;
-// }
-
 int main() {
 	
 	//initialisation de la table des symboles
@@ -59,12 +30,20 @@ int main() {
    Scanner * scan = new Scanner;
    initScan(scan,"src/gpl.txt");
 
-   // Lecture de la grammaire
+   // Lecture de la gpl
    cout << "*** Scanner de la GPL ***" << endl;
-   while (!scan->fs->eof()) {
-   lireMot(scan, symboles);
-	}
+   // while (!scan->fs->eof()) {
+   	//lireMot(scan, symboles);
+	// }
 
+	// Analyse de la gpl
+	cout << "*** Analyse de la GPL***" << endl;
+	lireMot(scan, symboles);
+	if(analyse(scan, node, node[0])) {
+		cout << "OK" << endl;
+	} else {
+		cout << "Pas OK" << endl;
+	}
 	//libération de la mémoire allouer
    closeScan(scan);
    delete scan;
