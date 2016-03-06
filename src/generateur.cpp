@@ -60,7 +60,7 @@ Node** GenForet() {
 						),
 					GenAtom(9,0,TERMINAL));
 	
-	node[1] = GenAtom(18,2,NONTERMINAL);
+	node[1] = GenAtom(18,2,TERMINAL);
 	
 	node[2] = GenConc(
 						GenAtom(3,0,NONTERMINAL),
@@ -84,7 +84,7 @@ Node** GenForet() {
 					GenUnion(
 						GenUnion(
 							GenUnion(
-								GenAtom(18,5,NONTERMINAL),
+								GenAtom(18,5,TERMINAL),
 								GenAtom(17,5,TERMINAL)
 							),
 							GenConc(

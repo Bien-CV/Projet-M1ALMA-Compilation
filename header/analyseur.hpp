@@ -5,6 +5,6 @@
 #include "typage.hpp"
 #include "scanner.hpp"
 
-bool analyse(Scanner * s, Node** G0, Node* p);
+bool analyse(Scanner * s, Node** G0, Node* p, type_tableSymbole & tabSymb);
 
 #endif //ANALYSEUR_HPP

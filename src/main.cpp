@@ -32,14 +32,14 @@ int main() {
 
    // Lecture de la gpl
    cout << "*** Scanner de la GPL ***" << endl;
-   // while (!scan->fs->eof()) {
-   	//lireMot(scan, symboles);
+ //   while (!scan->fs->eof()) {
+ //   	lireMot(scan, symboles);
 	// }
 
 	// Analyse de la gpl
 	cout << "*** Analyse de la GPL***" << endl;
 	lireMot(scan, symboles);
-	if(analyse(scan, node, node[0])) {
+	if(analyse(scan, node, node[0], symboles)) {
 		cout << "OK" << endl;
 	} else {
 		cout << "Pas OK" << endl;
@@ -47,6 +47,7 @@ int main() {
 	//libération de la mémoire allouer
    closeScan(scan);
    delete scan;
+   //desallouer chaque node proprement et ensuite l'arbre
    delete node;
 
 	return 0;
