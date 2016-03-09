@@ -44,6 +44,7 @@ int main() {
 	} else {
 		cout << "Pas OK" << endl;
 	}
+	
 	//libération de la mémoire allouer
    closeScan(scan);
    delete scan;

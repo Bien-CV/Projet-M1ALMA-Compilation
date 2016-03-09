@@ -56,7 +56,7 @@ bool analyse(Scanner * s, Node** G0, Node* p, type_tableSymbole & tabSymb) {
 						cout << "je suis term" << endl;
 						analyseur = true;
 						if(pa->action !=0) {
-							//G0.action(p->act);
+							G0_action(p->act, G0);
 						}
 						lireMot(s, tabSymb);
 					} else {
@@ -70,8 +70,7 @@ bool analyse(Scanner * s, Node** G0, Node* p, type_tableSymbole & tabSymb) {
 					cout << "je suis passé par non term" << endl;
 					if(analyse(s, G0, G0[pa->code], tabSymb)) {
 						if(pa->action !=0) {
-
-							//G0.action(p->act);
+							G0_action(p->act, G0);
 						}
 						analyseur = true;
 					} else {
