@@ -5,6 +5,7 @@
 #include "scanner.hpp"
 #include "analyseur.hpp"
 #include "tabSymbole.hpp"
+#include "action.hpp"
 
 using namespace std;
 
@@ -15,6 +16,8 @@ int main() {
 	initTableSymbole(symboles);
 	cout << "*** Initialisation de la table des symboles ***" << endl;
 	
+	type_pile pile;
+
 	// création de la grammaire mere
 	Node** node;
 	node = GenForet();
@@ -39,7 +42,7 @@ int main() {
 	// Analyse de la gpl
 	cout << "*** Analyse de la GPL***" << endl;
 	lireMot(scan, symboles);
-	if(analyse(scan, node, node[0], symboles)) {
+	if(analyse(scan, node, node[0], symboles, pile)) {
 		cout << "OK" << endl;
 	} else {
 		cout << "Pas OK" << endl;
