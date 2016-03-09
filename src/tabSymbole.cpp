@@ -15,7 +15,7 @@ void initTableSymbole(type_tableSymbole & tabSymb) {
 	tabSymb["+"] = 7;
 	tabSymb["*"] = 8;
 	tabSymb[";"] = 9;
-	tabSymb[", "] = 10;
+	tabSymb[","] = 10;
 	tabSymb["("] = 11;
 	tabSymb[")"] = 12;
 	tabSymb["["] = 13;
