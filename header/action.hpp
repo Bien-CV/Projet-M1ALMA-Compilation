@@ -9,11 +9,11 @@
 #include "typage.hpp"
 
 typedef std::stack<Node*> type_pile;
-typedef std::vector<std::string> type_dico;
+typedef std::vector<int> type_dico;
 
-int recherche(type_dico & dico, type_tableSymbole & tabSymb);
+int recherche(type_dico & dico, int code);
 void empiler(type_pile & pile, Node * p);
 void depiler(type_pile & pile, Node * p);
-void g0_action(int action, int scanAction, AtomType atype, Node ** G0, type_tableSymbole & tabSymb, type_pile & pile);
+void g0_action(Atom *pa, int scanAction, Node ** G0, type_tableSymbole & tabSymb, type_pile & pile);
 
 #endif //ACTION_HPP
