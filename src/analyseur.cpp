@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool analyse(Scanner * s, Node** G0, Node* p, type_tableSymbole & tabSymb, type_pile pile) {
+bool analyse(Scanner * s, Node** G0, Node* p, type_tableSymbole & tabSymb, type_pile & pile) {
 	bool analyseur = false;
 
 	switch(p->classe) {

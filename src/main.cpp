@@ -48,11 +48,16 @@ int main() {
 		cout << "Pas OK" << endl;
 	}
 	
+	cout << "*** Affichage des arbres ***" << endl;
+	for(int i = 0; i < 7; ++i) {
+		ImprimeArbre(node[i], 0);
+		cout << "\n";
+	}
 	//libération de la mémoire allouer
    closeScan(scan);
-   delete scan;
+   //delete scan;
    //desallouer chaque node proprement et ensuite l'arbre
-   delete node;
+   //delete node;
 
 	return 0;
 }

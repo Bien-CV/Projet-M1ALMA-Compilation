@@ -120,6 +120,8 @@ void ImprimeArbre(Node * p, int prof) {
 	{
 		cout << "---" ;
 	}
+	if(p != NULL)
+	{
 		switch (p->classe) {
 			case CONC: {
 				Conc* pconc = (Conc*)p;
@@ -153,4 +155,7 @@ void ImprimeArbre(Node * p, int prof) {
 			}
 				break;
 		}
+	} else {
+		cout << "vide" << endl;
+	}
 }
