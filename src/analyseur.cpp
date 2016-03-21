@@ -63,7 +63,7 @@ bool analyse(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole &
 						//cout<< "je suis term, code mère:" << pa->code  << ", code gpl :" << s->instance->code << endl;
 						analyseur = true;
 						if(pa->action !=0) {
-							g0_action(pa, s->instance->action, G0, tabSymb, pile);
+							g0_action(pa, s->instance->action, G0, tabSymb, pile, s->instance->chaine);
 						}
 						lireMot(s, tabSymb);
 					} else {
@@ -81,7 +81,7 @@ bool analyse(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole &
 					//cout<< "je suis passé par non term" << endl;
 					if(analyse(s, G0, G0[pa->code], tabSymb, pile)) {
 						if(pa->action !=0) {
-							g0_action(pa, s->instance->action, G0, tabSymb, pile);
+							g0_action(pa, s->instance->action, G0, tabSymb, pile, s->instance->chaine);
 						}
 						analyseur = true;
 					} else {
