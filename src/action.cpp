@@ -21,21 +21,24 @@ void empiler(type_pile & pile, Node * p) {
 }
 
 
-void depiler(type_pile & pile, Node * p) {
+Node * depiler(type_pile & pile) {
+	Node * p = new Node();
 	p = pile.top();
 	pile.pop();
+	return p;
 }
 
-void g0_action(Atom *pa, int scanAction, Node** G0, type_tableSymbole & tabSymb, type_pile & pile) {
+void g0_action(Atom *pa, int scanAction, std::map<int, Node*>& G0, type_tableSymbole & tabSymb, type_pile & pile) {
 	Node * t1 = new Node();
 	Node * t2 = new Node();
 
 	switch (pa->action) {
 		case 1: {
-			depiler(pile, t1);
-			depiler(pile, t2);
+			t1 = depiler(pile);
+			t2 = depiler(pile);
 			Atom* p = (Atom*)t2;
-			G0[(p->code)+5] = t1;
+			G0[(p->code)] = t1;
+			ImprimeArbre(G0[(p->code)],0);
 		}
 			break;
 		case 2: {
@@ -45,52 +48,33 @@ void g0_action(Atom *pa, int scanAction, Node** G0, type_tableSymbole & tabSymb,
 		}
 			break;
 		case 3: {
-			depiler(pile, t1);
-			depiler(pile, t2);
+			t1 = depiler(pile);
+			t2 = depiler(pile);
 			empiler(pile, GenUnion(t2, t1));
-
-			cout << "##############################################" << endl;
-			ImprimeArbre(pile.top(), 0);
-			cout << "#####################f########################" << endl;
 		}
 			break;
 		case 4: {
-			depiler(pile, t1);
-			depiler(pile, t2);
+			t1 = depiler(pile);
+			t2 = depiler(pile);
 			empiler(pile, GenConc(t2, t1));
-			cout << "##############################################" << endl;
-			ImprimeArbre(pile.top(), 0);
-			cout << "#####################f########################" << endl;
 		}
 			break;
 		case 5: {
 			if (pa->type == TERMINAL) {
 				empiler(pile, GenAtom(recherche(dicoT, pa->code), pa->action, TERMINAL));
-				cout << "##############################################" << endl;
-			ImprimeArbre(pile.top(), 0);
-			cout << "#####################f########################" << endl;
 			} else {
 				empiler(pile, GenAtom(recherche(dicoNT, pa->code), scanAction, NONTERMINAL));
-				cout << "##############################################" << endl;
-			ImprimeArbre(pile.top(), 0);
-			cout << "#####################f########################" << endl;
 			}
 		}
 			break;
 		case 6: {
-			depiler(pile, t1);
+			t1 = depiler(pile);
 			empiler(pile, GenStar(t1));
-			cout << "##############################################" << endl;
-			ImprimeArbre(pile.top(), 0);
-			cout << "#####################f########################" << endl;
 		}
 			break;
 		case 7: {
-			depiler(pile, t1);
+			t1 = depiler(pile);
 			empiler(pile, GenUn(t1));
-			cout << "##############################################" << endl;
-			ImprimeArbre(pile.top(), 0);
-			cout << "#####################f########################" << endl;
 		}
 			break;
 	}

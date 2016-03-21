@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <map>
 
 #include "typage.hpp"
 
@@ -12,7 +13,7 @@ Union* GenUnion(Node* left, Node* right);
 Star* GenStar(Node* stare);
 Un* GenUn(Node* une);
 Atom* GenAtom(int code, int action, AtomType type);
-Node** GenForet();
+std::map<int, Node*> GenForet();
 void ImprimeArbre(Node * p, int prof);
 
 #endif //GENERATEUR_HPP

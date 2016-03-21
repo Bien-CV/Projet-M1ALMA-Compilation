@@ -19,8 +19,12 @@ int main() {
 	type_pile pile;
 
 	// création de la grammaire mere
-	Node** node;
-	node = GenForet();
+/////////////////////////////////////////////////////
+	std::map<int, Node*> node = GenForet();
+	//Node** node;//HASHMAP!!!!!
+/////////////////////////////////////////////////////
+
+	// node = GenForet();
 
 	//affichage de la création des arbres
 	cout << "*** Affichage des arbres de la grammaire mère ***" << endl;
@@ -49,10 +53,28 @@ int main() {
 	}
 	
 	cout << "*** Affichage des arbres ***" << endl;
-	for(int i = 0; i < 7; ++i) {
-		ImprimeArbre(node[i], 0);
+
+
+	for(auto &iterator : node) {
+		cout << "***** arbre a la case " << iterator.first << "***** " << endl;
+		ImprimeArbre(iterator.second, 0);
 		cout << "\n";
 	}
+
+
+
+	// for( unsigned int a = 0; a < sizeof(node)/sizeof(node[0]); a = a + 1 ) {
+	// 	if(node[a] != NULL) {
+	// 		ImprimeArbre(node[a], 0);
+	// 		cout << "\n";
+	// 	}
+	// }
+	// for(int i = 0; i < 5; ++i) {
+	// 	ImprimeArbre(node[i], 0);
+	// 	cout << "\n";
+	// }
+
+
 	//libération de la mémoire allouer
    closeScan(scan);
    //delete scan;

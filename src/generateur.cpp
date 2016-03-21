@@ -45,8 +45,11 @@ Atom* GenAtom(int code, int action, AtomType type) {
 	return p_atom;
 }
 
-Node** GenForet() {
-	Node** node = new Node*[5];
+// Node** GenForet() {
+std::map<int, Node*> GenForet() {
+	// Node** node = new Node*[5];
+
+	std::map<int, Node*> node;
 
 	node[0] = GenConc(
 					GenStar(
