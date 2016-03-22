@@ -26,13 +26,28 @@ void initTableSymbole(type_tableSymbole & tabSymb) {
 	tabSymb[18] = "IDNTER";
 }
 
+int rechercheSymboleDansG0(string s, type_tableSymbole & tabSymb) {
+	int nb = 0;//pour retenir ou on est dans la tab symb
+	for (auto &it : tabSymb) {
+
+		if(nb == 19) {
+			return -1;
+		}
+		nb++;
+		if (it.second == s){
+			return it.first;
+		}
+
+	}
+	return -1;
+}
+
 int rechercheSymbole(string s, type_tableSymbole & tabSymb) {
-	//if (tabSymb.find(s) != tabSymb.end()) {
 	for (auto &it : tabSymb) {
 		if (it.second == s){
 			return it.first;
 		}
-	} 
+	}
 	return -1;
 }
 

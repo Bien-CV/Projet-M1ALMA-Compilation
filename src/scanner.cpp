@@ -51,7 +51,7 @@ void lireMot(Scanner * scan, type_tableSymbole & tabSymb) {
     	scan->instance->code = 17;
     	scan->instance->type = TERMINAL;
    } else { // c'est un non terminal
-    	if ( (numSymb = rechercheSymbole(word, tabSymb)) != -1 ) { //on l'a trouvé dans la table des symboles
+    	if ( (numSymb = rechercheSymboleDansG0(word, tabSymb)) != -1 ) { //on l'a pas trouvé dans la table des symboles
     		scan->instance->code = numSymb;
     		//scan->instance->action = 0;
     		scan->instance->type = NONTERMINAL;

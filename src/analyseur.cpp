@@ -60,14 +60,15 @@ bool analyse(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole &
 				case TERMINAL: {
 					cout<< "-------------------" << endl;
 					if(pa->code == s->instance->code) {
-						//cout<< "je suis term, code mère:" << pa->code  << ", code gpl :" << s->instance->code << endl;
+
+						//cout<< "je suis term, symb = " << s->instance->chaine << ", code mère:" << pa->code  << ", code gpl :" << s->instance->code << endl;
 						analyseur = true;
 						if(pa->action !=0) {
 							g0_action(pa, s->instance->action, G0, tabSymb, pile, s->instance->chaine);
 						}
 						lireMot(s, tabSymb);
 					} else {
-						//cout<< "je suis term, code mère:" << pa->code  << ", code gpl :" << s->instance->code <<  " differents" <<endl;
+						//cout<< "je suis term, symb = " << s->instance->chaine << ", code mère:" << pa->code  << ", code gpl :" << s->instance->code << " differents" << endl;
 						
 						analyseur = false;
 					}
