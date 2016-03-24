@@ -100,16 +100,16 @@ bool analyse(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole &
 }
 
 
-bool analyse_GLP(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole & tabSymb, type_pile & pile) {
+bool analyse_GPL(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole & tabSymb, type_pile & pile) {
 	bool analyseur_GLP = false;
 
 	switch(p->classe) {
 		case CONC: {
 			Conc* pconc = (Conc*)p;
 			//cout<< " conc "  <<  endl;
-			if(analyse_GLP(s, G0, pconc->right, tabSymb, pile)) {
+			if(analyse_GPL(s, G0, pconc->right, tabSymb, pile)) {
 				//cout<< " conc gauche ok donc go droite" << endl;
-				analyseur_GLP = analyse_GLP(s, G0, pconc->left, tabSymb, pile);
+				analyseur_GLP = analyse_GPL(s, G0, pconc->left, tabSymb, pile);
 				//cout<< " conc droite a été fait " << endl;
 
 			} else {
@@ -122,12 +122,12 @@ bool analyse_GLP(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 		case UNION: {
 			//cout<< " union" << endl;
 			Union* punion = (Union*)p;
-			if(analyse_GLP(s, G0, punion->right, tabSymb, pile)) {
+			if(analyse_GPL(s, G0, punion->right, tabSymb, pile)) {
 				//cout<< " union gauche ok pas de droite" << endl;
 				analyseur_GLP = true;
 			} else {
 				//cout<< " union gauche pas ok go droite" << endl;
-				analyseur_GLP = analyse_GLP(s, G0, punion->left, tabSymb, pile);
+				analyseur_GLP = analyse_GPL(s, G0, punion->left, tabSymb, pile);
 			}
 
 			//cout<< ", analyseur_GLP = union : " << analyseur_GLP = <<  endl;
@@ -137,7 +137,7 @@ bool analyse_GLP(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 			//cout<< " star" << endl;
 			Star* pstar = (Star*)p;
 			analyseur_GLP = true;
-			while (analyse_GLP(s, G0, pstar->stare, tabSymb, pile)) {
+			while (analyse_GPL(s, G0, pstar->stare, tabSymb, pile)) {
 				//cout<< "1 star effectué" << endl;
 			}
 		}
@@ -146,7 +146,7 @@ bool analyse_GLP(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 			//cout<< " un" << endl;
 			Un* pun = (Un*)p;
 			analyseur_GLP = true;
-			analyse_GLP(s, G0, pun->une, tabSymb, pile);
+			analyse_GPL(s, G0, pun->une, tabSymb, pile);
 			//cout<< ", analyseur_GLP = un : " << analyseur_GLP = <<  endl;
 		}
 			break;
@@ -165,7 +165,7 @@ bool analyse_GLP(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 							//gpl_action(pa, s->instance->action, G0, tabSymb, pile, s->instance->chaine);
 						}
 
-						//lireMotGLP(s, tabSymb);
+						lireMotGPL(s, tabSymb);
 
 					} else {
 						//cout<< "je suis term, symb = " << s->instance->chaine << ", code mère:" << pa->code  << ", code gpl :" << s->instance->code << " differents" << endl;
@@ -180,7 +180,7 @@ bool analyse_GLP(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 					cout<< " ----------------" << endl;
 					//on choppe la case de G0 contenant l'action a effectuer
 					//cout<< "je suis passé par non term" << endl;
-					if(analyse_GLP(s, G0, G0[pa->code], tabSymb, pile)) {
+					if(analyse_GPL(s, G0, G0[pa->code], tabSymb, pile)) {
 						if(pa->action !=0) {
 							//gpl_action(pa, s->instance->action, G0, tabSymb, pile, s->instance->chaine);
 						}

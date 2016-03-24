@@ -141,16 +141,16 @@ void lireMotGPL(Scanner_GPL * scan, type_tableSymbole & tabSymb) {
 		scan->instance->chaine = word;
 		scan->instance->action = 0;
 	}
-	afficheInstance_GPL(scan->instance);
+	//afficheInstance_GPL(scan->instance);
 }
 
-void afficheInstance_GPL(Instance_GPL * inst) {
-	cout << "Chaine : " << inst->chaine;
-	cout << "\t Code : " << inst->code;
-	cout << "\t Action : " << inst->action;
-	switch(inst->type) {
-		case TERMINAL : cout << "\t AtomType : TERMINAL" << endl;
-			break;
-		case NONTERMINAL : cout << "\t AtomType : NONTERMINAL" << endl;
-	}
-}
+// void afficheInstance_GPL(Instance_GPL * inst) {
+// 	cout << "Chaine : " << inst->chaine;
+// 	cout << "\t Code : " << inst->code;
+// 	cout << "\t Action : " << inst->action;
+// 	switch(inst->type) {
+// 		case TERMINAL : cout << "\t AtomType : TERMINAL" << endl;
+// 			break;
+// 		case NONTERMINAL : cout << "\t AtomType : NONTERMINAL" << endl;
+// 	}
+// }

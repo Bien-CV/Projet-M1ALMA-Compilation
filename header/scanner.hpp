@@ -49,7 +49,7 @@ void lireMot(Scanner * s, type_tableSymbole & tabSymb);
 // void lireBlanc(Scanner * s);
 void afficheInstance(Instance * inst);
 
-void lireMotGLP(Scanner_GPL * s, type_tableSymbole & tabSymb);
-void afficheInstance_GPL(Instance_GPL * inst);
+void lireMotGPL(Scanner_GPL * s, type_tableSymbole & tabSymb);
+// void afficheInstance_GPL(Instance_GPL * inst);
 
 #endif //SCANNER_HPP
