@@ -1,0 +1,6 @@
+Program somme
+var x ;
+Debut
+x := 2 ;
+writeln x ;
+Fin .
