@@ -2,8 +2,8 @@
 
 using namespace std;
 
-void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
-	switch(code) {
+void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
+	switch(pcode[co]) {
 		case 1: {//lda
 			spx = spx + 1;
 			pilex[spx] = pcode[co + 1];
@@ -45,7 +45,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		}
 		break;
 		case 8: {//sup
-			if pilex[spx - 1] > pilex[spx] {
+			if(pilex[spx - 1] > pilex[spx]){
 	            pilex[spx - 1] = 1;
 	        } else {
 	            pilex[spx - 1] = 0;
@@ -56,7 +56,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		}
 		break;
 		case 9: {//supe
-			if pilex[spx - 1] >= pilex[spx] {
+			if(pilex[spx - 1] >= pilex[spx]){
 	            pilex[spx - 1] = 1;
 	        } else {
 	            pilex[spx - 1] = 0;
@@ -66,7 +66,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		}
 		break;
 		case 10: {//inf
-			if pilex[spx - 1] < pilex[spx] {
+			if(pilex[spx - 1] < pilex[spx]){
 	            pilex[spx - 1] = 1;
 	        } else {
 	            pilex[spx - 1] = 0;
@@ -76,7 +76,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		}
 		break;
 		case 11: {//infe
-			if pilex[spx - 1] <= pilex[spx] {
+			if(pilex[spx - 1] <= pilex[spx]){
 	            pilex[spx - 1] = 1;
 	        } else {
 	            pilex[spx - 1] = 0;
@@ -86,7 +86,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		}
 		break;
 		case 12: {//eq
-			if pilex[spx - 1] == pilex[spx] {
+			if(pilex[spx - 1] == pilex[spx]){
 	            pilex[spx - 1] = 1;
 	        } else {
 	            pilex[spx - 1] = 0;
@@ -96,7 +96,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		}
 		break;
 		case 13: {//diff
-			if pilex[spx - 1] != pilex[spx] {
+			if(pilex[spx - 1] != pilex[spx]){
             pilex[spx - 1] = 1;
 	        } else {
 	            pilex[spx - 1] = 0;
@@ -113,7 +113,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
             co++;
 		}
 		break;
-		case 14: {//rdln
+		case 15: {//rdln
 			string input;
             spx++;
             cin >> input;
@@ -122,73 +122,73 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
             co++;
 		}
 		break;
-		case 15: {//wrt
+		case 16: {//wrt
 			cout << pilex[spx];
             spx++;
             co++;
 		}
 		break;
-		case 16: {//wrtln
+		case 17: {//wrtln
 			cout << pilex[spx] << endl;
             spx++;
             co++;
 		}
 		break;
-		case 17: {//add
+		case 18: {//add
 			pilex[spx - 1] = pilex[spx - 1] + pilex[spx];
             spx--;
             co++;
 		}
 		break;
-		case 18: {//moins
+		case 19: {//moins
 			pilex[spx - 1] = pilex[spx - 1] - pilex[spx];
             spx--;
             co++;
 		}
 		break;
-		case 19: {//mult
+		case 20: {//mult
 			pilex[spx - 1] = pilex[spx - 1] / pilex[spx];
             spx--;
             co++;
 		}
 		break;
-		case 17: {//div
+		case 21: {//div
 			pilex[spx - 1] = pilex[spx - 1] * pilex[spx];
             spx--;
             co++;
 		}
 		break;
-		case 18: {//neg
+		case 22: {//neg
 			pilex[spx] = 0 - pilex[spx];
             co++;
 		}
 		break;
-		case 19: {//inc
+		case 23: {//inc
 			pilex[spx]++ ;
             co++;
 		}
 		break;
-		case 20: {//dec
+		case 24: {//dec
 			pilex[spx]-- ;
             co++;
 		}
 		break;
-		case 21: {//and
+		case 25: {//and
 			pilex[spx] = pilex[spx] && pilex[spx -1];
             co++;
 		}
 		break;
-		case 22: {//or
+		case 26: {//or
 			pilex[spx] = pilex[spx] && pilex[spx -1];
             co++;
 		}
 		break;
-		case 23: {//not
+		case 27: {//not
 			pilex[spx] = (! pilex[spx]) ;
             co++;
 		}
 		break;
-		case 24: {//aff
+		case 28: {//aff
 			pilex[pilex[spx - 1]] = pilex[spx];
             spx = spx - 2;
             co++;
@@ -199,9 +199,48 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
 	}
 }
 
-void exec(P_code &pcode, Pilex &pilex, int &co, int &spx) {
+void exec(P_code &pcode, Pilex &pilex) {
+	int co = 0;
+	int spx = 3;
 	while( pcode[co] != 29 ) {
-		interpreter(pcode[co], pilex, co, spx);
+		cout << pcode[co] << endl;
+		interpreter(pcode, pilex, co, spx);
 	}
+	cout << "ok" << endl;
+	pcode.resize(1);
+	pilex.resize(1);
 
+}
+
+void doIt() {
+	   P_code pcodetest;
+   Pilex pilextest(3,0);
+   pilextest.push_back(0);
+   pilextest.push_back(0);
+   pilextest.push_back(0);
+
+   pcodetest.push_back(1);
+   pcodetest.push_back(0);
+   pcodetest.push_back(3);
+   pcodetest.push_back(4);
+   pcodetest.push_back(28);
+   pcodetest.push_back(1);
+   pcodetest.push_back(1);
+   pcodetest.push_back(3);
+   pcodetest.push_back(1);
+   pcodetest.push_back(28);
+   pcodetest.push_back(1);
+   pcodetest.push_back(2);
+   pcodetest.push_back(2);
+   pcodetest.push_back(0);
+   pcodetest.push_back(2);
+   pcodetest.push_back(1);
+   pcodetest.push_back(18);
+   pcodetest.push_back(28);
+   pcodetest.push_back(2);
+   pcodetest.push_back(2);
+   pcodetest.push_back(17);
+   pcodetest.push_back(29);
+  
+	exec(pcodetest,pilextest);
 }

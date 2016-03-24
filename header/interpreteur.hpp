@@ -8,8 +8,9 @@ typedef std::vector<int> P_code;
 typedef std::vector<int> Pilex;
 
 
-void interpreter(int code, P_code &pcode, Pilex &pilex);
-void exec(P_code pcode, Pilex pilex, int &co, int &spx);
+void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx);
+void exec(P_code &pcode, Pilex &pilex);
+void doIt();
 
 
 #endif //INTERPRETEUR_HPP
