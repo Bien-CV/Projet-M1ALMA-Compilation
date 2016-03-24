@@ -81,5 +81,40 @@ int main() {
    //desallouer chaque node proprement et ensuite l'arbre
    //delete node;
 
+
+
+   
+/*
+   P_code pcode;
+   Pilex pilex;
+   pilex.push_back(0);
+   pilex.push_back(0);
+   pilex.push_back(0);
+
+   pcode.push_back(1);
+   pcode.push_back(0);
+   pcode.push_back(3);
+   pcode.push_back(4);
+   pcode.push_back(23);
+   pcode.push_back(1);
+   pcode.push_back(1);
+   pcode.push_back(3);
+   pcode.push_back(1);
+   pcode.push_back(23);
+   pcode.push_back(1);
+   pcode.push_back(2);
+   pcode.push_back(2);
+   pcode.push_back(0);
+   pcode.push_back(2);
+   pcode.push_back(1);
+   pcode.push_back(17);
+   pcode.push_back(23);
+   pcode.push_back(2);
+   pcode.push_back(2);
+   pcode.push_back(16);
+   pcode.push_back(29);
+
+   exec(pcode[0], pcode, pilex, co, spx)*/
+
 	return 0;
 }

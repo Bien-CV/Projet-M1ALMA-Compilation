@@ -188,8 +188,8 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
             co++;
 		}
 		break;
-		case 23: {//aff
-			pile_x[pile_x[spx - 1]] = pile_x[spx];
+		case 24: {//aff
+			pilex[pilex[spx - 1]] = pilex[spx];
             spx = spx - 2;
             co++;
 		}
@@ -201,7 +201,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &co, int &spx) {
 
 void exec(P_code &pcode, Pilex &pilex, int &co, int &spx) {
 	while( pcode[co] != 29 ) {
-		interpreter(pcode[co], pcode, pilex, co, spx);
+		interpreter(pcode[co], pilex, co, spx);
 	}
 
 }

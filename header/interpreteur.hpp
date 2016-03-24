@@ -9,7 +9,7 @@ typedef std::vector<int> Pilex;
 
 
 void interpreter(int code, P_code &pcode, Pilex &pilex);
-void exec(P_code pcode, Pilex pilex);
+void exec(P_code pcode, Pilex pilex, int &co, int &spx);
 
 
 #endif //INTERPRETEUR_HPP
