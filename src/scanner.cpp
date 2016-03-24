@@ -94,3 +94,52 @@ void afficheInstance(Instance * inst) {
 		case NONTERMINAL : cout << "\t AtomType : NONTERMINAL" << endl;
 	}
 }
+
+void lireMotGPL(Scanner * scan, type_tableSymbole & tabSymb) {
+	string word = "";
+	string temp = "";
+	char carac;
+	int numSymb;
+
+	carac = scan->fs->get();
+
+	//capture d'un mot
+	while ((!scan->fs->eof()) && (carac != ' ') && (carac != '\n')) {
+		word += carac;
+		carac = scan->fs->get();
+   }
+
+   //on a le mot dans word, on commence a le decrypter
+   if(word[0] == '\''){ // c'est un terminal
+    	scan->instance->code = 17;
+    	scan->instance->type = TERMINAL;
+   } else { // c'est un non terminal
+    	if ( (numSymb = rechercheSymboleDansG0(word, tabSymb)) != -1 ) { //on l'a pas trouvé dans la table des symboles
+    		scan->instance->code = numSymb;
+    		//scan->instance->action = 0;
+    		scan->instance->type = NONTERMINAL;
+    		//scan->instance->chaine = word;
+    	} else {
+    		scan->instance->code = 18;
+    		//scan->instance->action = 0;
+    		scan->instance->type = NONTERMINAL;
+    		//scan->instance->chaine = word;
+    	}
+   }
+   //déterminer si symbole a une action
+   if (word.find("#") != std::string::npos) {
+   	if(scan->instance->type == TERMINAL) {
+   		scan->instance->chaine = word.substr(0, word.find("#")) + "'"; //substitu au split
+	 		temp = word.substr(word.find("#")+1,temp.size()-1);
+	 		scan->instance->action = atoi(temp.c_str());
+   	} else {
+   		scan->instance->chaine = word.substr(0, word.find("#"));
+	 		temp = word.substr(word.find("#")+1,temp.size()-1);
+	 		scan->instance->action = atoi(temp.c_str());
+   	}
+	} else {
+		scan->instance->chaine = word;
+		scan->instance->action = 0;
+	}
+	afficheInstance(scan->instance);
+}

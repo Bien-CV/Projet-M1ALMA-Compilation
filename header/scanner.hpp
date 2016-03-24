@@ -19,6 +19,22 @@ typedef struct {
 	Instance * instance;
 } Scanner;
 
+///////////////////////////////////////////////////
+enum Symbole_GPL {ENT, IDENT, SYMBOLE_S, SYMBOLE_C};
+
+typedef struct {
+	int code;
+	int action;
+	AtomType type;
+	std::string chaine;
+} Instance_GPL;//?????
+
+typedef struct {
+	std::fstream * fs;
+	Instance_GPL * instance;
+} Scanner_GPL;
+///////////////////////////////////////////////////
+
 //scan permet d'avancer dans phrase (S -> 'a' + 'b') et avec analyse
 // -> a chaque fin d'analyse (ATOM) on check si se qu'on a trouve == 
 //ce sur quoi le scan est. si ok on avance scan et on continue 
@@ -31,6 +47,8 @@ void closeScan(Scanner * s);
 void lireMot(Scanner * s, type_tableSymbole & tabSymb);
 // void lireBlanc(Scanner * s);
 void afficheInstance(Instance * inst);
+
+void lireMotGLP(Scanner * s, type_tableSymbole & tabSymb);
 
 
 #endif //SCANNER_HPP

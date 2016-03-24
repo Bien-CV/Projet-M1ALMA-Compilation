@@ -9,5 +9,6 @@
 #include "action.hpp"
 
 bool analyse(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole & tabSymb, type_pile & pile);
+bool analyse_GLP(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole & tabSymb, type_pile & pile);
 
 #endif //ANALYSEUR_HPP
