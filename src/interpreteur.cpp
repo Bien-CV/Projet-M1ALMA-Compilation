@@ -66,7 +66,7 @@ void interpreter(int code, P_code &pcode, Pilex &pilex, int &c0, int &spx) {
 
 		}
 		break;
-		case 14: {//rdel
+		case 15: {//rdel
 
 		}
 		break;

@@ -100,7 +100,7 @@ bool analyse(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole &
 }
 
 
-bool analyse_GLP(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole & tabSymb, type_pile & pile) {
+bool analyse_GLP(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableSymbole & tabSymb, type_pile & pile) {
 	bool analyseur_GLP = false;
 
 	switch(p->classe) {
@@ -165,7 +165,7 @@ bool analyse_GLP(Scanner * s, std::map<int, Node*>& G0, Node* p, type_tableSymbo
 							//gpl_action(pa, s->instance->action, G0, tabSymb, pile, s->instance->chaine);
 						}
 
-						lireMotGLP(s, tabSymb);
+						//lireMotGLP(s, tabSymb);
 
 					} else {
 						//cout<< "je suis term, symb = " << s->instance->chaine << ", code mère:" << pa->code  << ", code gpl :" << s->instance->code << " differents" << endl;

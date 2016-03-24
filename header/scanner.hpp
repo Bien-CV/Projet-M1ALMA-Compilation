@@ -26,6 +26,7 @@ typedef struct {
 	int code;
 	int action;
 	AtomType type;
+	Symbole_GPL symb;
 	std::string chaine;
 } Instance_GPL;//?????
 
@@ -48,7 +49,7 @@ void lireMot(Scanner * s, type_tableSymbole & tabSymb);
 // void lireBlanc(Scanner * s);
 void afficheInstance(Instance * inst);
 
-void lireMotGLP(Scanner * s, type_tableSymbole & tabSymb);
-
+void lireMotGLP(Scanner_GPL * s, type_tableSymbole & tabSymb);
+void afficheInstance_GPL(Instance_GPL * inst);
 
 #endif //SCANNER_HPP
