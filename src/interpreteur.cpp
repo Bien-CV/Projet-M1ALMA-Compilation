@@ -197,50 +197,51 @@ void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		default: {cout << "non implementé" << endl;} break;
 			
 	}
+	//cout << pilex[0] << " , " << pilex[1] << " , " << pilex[2] << " et spx,co: " << spx << "," << co << endl;
 }
 
 void exec(P_code &pcode, Pilex &pilex) {
 	int co = 0;
 	int spx = 3;
 	while( pcode[co] != 29 ) {
-		cout << pcode[co] << endl;
+		// cout << pcode[co] << endl;
 		interpreter(pcode, pilex, co, spx);
 	}
 	cout << "ok" << endl;
-	pcode.resize(1);
-	pilex.resize(1);
 
 }
 
 void doIt() {
-	   P_code pcodetest;
-   Pilex pilextest(3,0);
-   pilextest.push_back(0);
-   pilextest.push_back(0);
-   pilextest.push_back(0);
+	P_code pcodetest;
+	Pilex pilextest(7,0);//wut, 3 pas assez, il faut + pour prevoir les sauv de val
+	// pilextest.push_back(0);
+	// pilextest.push_back(0);
+	// pilextest.push_back(0);
 
-   pcodetest.push_back(1);
-   pcodetest.push_back(0);
-   pcodetest.push_back(3);
-   pcodetest.push_back(4);
-   pcodetest.push_back(28);
-   pcodetest.push_back(1);
-   pcodetest.push_back(1);
-   pcodetest.push_back(3);
-   pcodetest.push_back(1);
-   pcodetest.push_back(28);
-   pcodetest.push_back(1);
-   pcodetest.push_back(2);
-   pcodetest.push_back(2);
-   pcodetest.push_back(0);
-   pcodetest.push_back(2);
-   pcodetest.push_back(1);
-   pcodetest.push_back(18);
-   pcodetest.push_back(28);
-   pcodetest.push_back(2);
-   pcodetest.push_back(2);
-   pcodetest.push_back(17);
-   pcodetest.push_back(29);
+	pcodetest.push_back(1);
+	pcodetest.push_back(0);
+	pcodetest.push_back(3);
+	pcodetest.push_back(4);
+	pcodetest.push_back(28);
+	pcodetest.push_back(1);
+	pcodetest.push_back(1);
+	pcodetest.push_back(3);
+	pcodetest.push_back(1);
+	pcodetest.push_back(28);
+	pcodetest.push_back(1);
+	pcodetest.push_back(2);
+	pcodetest.push_back(2);
+	pcodetest.push_back(0);
+	pcodetest.push_back(2);
+	pcodetest.push_back(1);
+	pcodetest.push_back(18);
+	pcodetest.push_back(28);
+	pcodetest.push_back(2);
+	pcodetest.push_back(2);
+	pcodetest.push_back(17);
+	pcodetest.push_back(29);
   
+	cout << "debut de l'execution" << endl;
 	exec(pcodetest,pilextest);
+	cout << "fin de l'execution" << endl; 
 }
