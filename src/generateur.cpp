@@ -154,7 +154,11 @@ void ImprimeArbre(Node * p, int prof) {
 				break;
 			case ATOM: {
 				Atom* pa = (Atom*)p;
-				cout << "> " << pa->code << endl;
+				cout << "> " << pa->code;
+				if(pa->action != -1){
+					cout << ", act " << pa->action;
+				}
+				cout << endl;
 			}
 				break;
 		}

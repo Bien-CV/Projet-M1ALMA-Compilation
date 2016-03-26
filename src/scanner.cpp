@@ -53,6 +53,7 @@ void lireMot(Scanner * scan, type_tableSymbole & tabSymb) {
    	if(scan->instance->type == TERMINAL) {
    		scan->instance->chaine = word.substr(0, word.find("#")) + "'"; //substitu au split
 	 		temp = word.substr(word.find("#")+1,temp.size()-1);
+	 		//cout << " action detectée pour " << scan->instance->chaine << " , : " << temp << endl;
 	 		scan->instance->action = atoi(temp.c_str());
    	} else {
    		scan->instance->chaine = word.substr(0, word.find("#"));

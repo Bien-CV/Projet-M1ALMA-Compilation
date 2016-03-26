@@ -32,6 +32,7 @@ void g0_action(Atom *pa, int scanAction, std::map<int, Node*>& G0, type_tableSym
 	Node * t1 = new Node();
 	Node * t2 = new Node();
 
+	cout << " ici scanaction =" << scanAction << endl;
 	switch (pa->action) {
 		case 1: {
 			t1 = depiler(pile);
@@ -50,18 +51,20 @@ void g0_action(Atom *pa, int scanAction, std::map<int, Node*>& G0, type_tableSym
 		case 3: {
 			t1 = depiler(pile);
 			t2 = depiler(pile);
+			// cout << t1->action << " t1 union t2 : " << t2->action << endl;
 			empiler(pile, GenUnion(t2, t1));
 		}
 			break;
 		case 4: {
 			t1 = depiler(pile);
 			t2 = depiler(pile);
+			// cout << t1->action << " t1 conc t2 : " << t2->action << endl;
 			empiler(pile, GenConc(t2, t1));
 		}
 			break;
 		case 5: {
 			if (pa->type == TERMINAL) {
-				empiler(pile, GenAtom(recherche_symb_ac_add(symbole,tabSymb), pa->action, TERMINAL));
+				empiler(pile, GenAtom(recherche_symb_ac_add(symbole,tabSymb), scanAction /*pa->action*/, TERMINAL));
 			} else {
 				empiler(pile, GenAtom(recherche_symb_ac_add(symbole,tabSymb), scanAction, NONTERMINAL));
 			}

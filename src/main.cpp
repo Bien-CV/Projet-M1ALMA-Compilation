@@ -33,7 +33,7 @@ int main() {
 
 	// Initialisation du scanner
    Scanner * scan = new Scanner;
-   initScan(scan,"src/gpl.txt");
+   initScan(scan,"src/gplfinal.txt");
 
    // Lecture de la gpl
    cout << "*** Scan de la GPL ***" << endl;
@@ -63,15 +63,19 @@ int main() {
 	// Lecture de la gpl
 	cout << "*** Scan du prog ***" << endl;
 	
-	//lireMotGPL(scangpl,symboles);
+	lireMotGPL(scangpl,symboles);
    	
 	// Analyse de la gpl
-	// cout << "*** Analyse du prog***" << endl;
-	// if(analyse(scan, node, node[0], symboles, pile)) {
-	// 	cout << "OK" << endl;
-	// } else {
-	// 	cout << "Pas OK" << endl;
-	// }
+	cout << "*** Analyse du prog***" << endl;
+	stack<int> pileOP;
+	map<std::string, int> IATAB;
+	vector<int> p_code;
+
+	if(analyse_GPL(scangpl, node, node[19], symboles, pileOP, IATAB, p_code)) {
+		cout << "OK" << endl;
+	} else {
+		cout << "Pas OK" << endl;
+	}
 
 	//libération de la mémoire allouée
    	closeScan(scan);
