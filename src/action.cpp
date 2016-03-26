@@ -1,6 +1,6 @@
 #include "action.hpp"
 
-using namespace std;
+// using namespace std;
 
 type_pile pile;
 // type_dico dicoT, dicoNT;
@@ -80,4 +80,13 @@ void g0_action(Atom *pa, AtomType type, int scanAction, std::map<int, Node*>& G0
 		}
 			break;
 	}
+}
+
+void gpl_action( std::map<std::string, int>& IATAB, std::stack<int>& pileOP, std::vector<int>& p_code, std::string chaine, int action) {
+	// switch(action) {
+	// 	case 1: {
+			
+	// 	}
+	// }
+
 }
