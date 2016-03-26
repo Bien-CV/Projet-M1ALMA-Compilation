@@ -28,11 +28,10 @@ Node * depiler(type_pile & pile) {
 	return p;
 }
 
-void g0_action(Atom *pa, int scanAction, std::map<int, Node*>& G0, type_tableSymbole & tabSymb, type_pile & pile, std::string symbole) {
+void g0_action(Atom *pa, AtomType type, int scanAction, std::map<int, Node*>& G0, type_tableSymbole & tabSymb, type_pile & pile, std::string symbole) {
 	Node * t1 = new Node();
 	Node * t2 = new Node();
 
-	cout << " ici scanaction =" << scanAction << endl;
 	switch (pa->action) {
 		case 1: {
 			t1 = depiler(pile);
@@ -63,7 +62,7 @@ void g0_action(Atom *pa, int scanAction, std::map<int, Node*>& G0, type_tableSym
 		}
 			break;
 		case 5: {
-			if (pa->type == TERMINAL) {
+			if (type == TERMINAL) {
 				empiler(pile, GenAtom(recherche_symb_ac_add(symbole,tabSymb), scanAction /*pa->action*/, TERMINAL));
 			} else {
 				empiler(pile, GenAtom(recherche_symb_ac_add(symbole,tabSymb), scanAction, NONTERMINAL));

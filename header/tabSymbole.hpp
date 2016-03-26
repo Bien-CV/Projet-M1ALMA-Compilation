@@ -9,6 +9,8 @@ typedef std::map <int, std::string> type_tableSymbole;
 
 void initTableSymbole(type_tableSymbole & tabSym);
 
+void affTableSymbole(type_tableSymbole & tabSymb);
+
 int rechercheSymboleDansG0(std::string s, type_tableSymbole & tabSymb);
 
 int rechercheSymbole(std::string s, type_tableSymbole & tabSym);

@@ -55,11 +55,9 @@ int main() {
 		ImprimeArbre(iterator.second, 0);
 		cout << "\n";
 	}
+
 	cout << "*** Affichage de la pile de symboles ***" << endl;
-	for(auto &iterator : symboles) {
-		cout << "*** ici nb " << iterator.first << " ac code " << iterator.second << "|" << endl;
-		cout << "******" << iterator.second.back() << endl;
-	}
+	affTableSymbole(symboles);
 
 	// Initialisation du scanner gpl
 	Scanner_GPL * scangpl = new Scanner_GPL;

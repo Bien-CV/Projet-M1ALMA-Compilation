@@ -1,0 +1,10 @@
+Program somme
+var Momo ;
+var Toto ;
+var Lolo ;
+Debut
+Toto := 4 ;
+Momo := 6 ;
+Lolo := Toto + Momo ;
+writeln Lolo ;
+Fin .

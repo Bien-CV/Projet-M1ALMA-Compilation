@@ -158,6 +158,12 @@ void ImprimeArbre(Node * p, int prof) {
 				if(pa->action != -1){
 					cout << ", act " << pa->action;
 				}
+				switch(pa->type) {
+					case TERMINAL : cout << " ,AtomType : TERMINAL " ;
+						break;
+					case NONTERMINAL : cout << " ,AtomType : NONTERMINAL " ;
+				}
+
 				cout << endl;
 			}
 				break;

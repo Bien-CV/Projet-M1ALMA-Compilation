@@ -26,6 +26,12 @@ void initTableSymbole(type_tableSymbole & tabSymb) {
 	tabSymb[18] = "IDNTER";
 }
 
+void affTableSymbole(type_tableSymbole & tabSymb) {
+	for(auto &iterator : tabSymb) {
+	cout << "*** ici nb " << iterator.first << " avec code " << iterator.second << endl;
+	}
+}
+
 int rechercheSymboleDansG0(string s, type_tableSymbole & tabSymb) {
 	int nb = 0;//pour retenir ou on est dans la tab symb
 	for (auto &it : tabSymb) {
