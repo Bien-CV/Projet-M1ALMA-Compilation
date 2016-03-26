@@ -22,12 +22,7 @@ int main() {
 	type_pile pile;
 
 	// création de la grammaire mere
-/////////////////////////////////////////////////////
 	std::map<int, Node*> node = GenForet();
-	//Node** node;//HASHMAP!!!!!
-/////////////////////////////////////////////////////
-
-	// node = GenForet();
 
 	//affichage de la création des arbres
 	cout << "*** Affichage des arbres de la grammaire mère ***" << endl;
@@ -41,14 +36,11 @@ int main() {
    initScan(scan,"src/gpl.txt");
 
    // Lecture de la gpl
-   cout << "*** Scanner de la GPL ***" << endl;
- //   while (!scan->fs->eof()) {
- //   	lireMot(scan, symboles);
-	// }
+   cout << "*** Scan de la GPL ***" << endl;
 
+	lireMot(scan, symboles);
 	// Analyse de la gpl
 	cout << "*** Analyse de la GPL***" << endl;
-	lireMot(scan, symboles);
 	if(analyse(scan, node, node[0], symboles, pile)) {
 		cout << "OK" << endl;
 	} else {
@@ -64,25 +56,25 @@ int main() {
 		cout << "\n";
 	}
 
+	// Initialisation du scanner gpl
+	Scanner_GPL * scangpl = new Scanner_GPL;
+	initScanGPL(scangpl,"src/prog.txt");
 
-
-	// for( unsigned int a = 0; a < sizeof(node)/sizeof(node[0]); a = a + 1 ) {
-	// 	if(node[a] != NULL) {
-	// 		ImprimeArbre(node[a], 0);
-	// 		cout << "\n";
-	// 	}
+	// Lecture de la gpl
+	cout << "*** Scan du prog ***" << endl;
+	
+	//lireMotGPL(scangpl,symboles);
+   	
+	// Analyse de la gpl
+	// cout << "*** Analyse du prog***" << endl;
+	// if(analyse(scan, node, node[0], symboles, pile)) {
+	// 	cout << "OK" << endl;
+	// } else {
+	// 	cout << "Pas OK" << endl;
 	// }
-	// for(int i = 0; i < 5; ++i) {
-	// 	ImprimeArbre(node[i], 0);
-	// 	cout << "\n";
-	// }
 
-
-	//libération de la mémoire allouer
-   closeScan(scan);
-   //delete scan;
-   //desallouer chaque node proprement et ensuite l'arbre
-   //delete node;
+	//libération de la mémoire allouée
+   	closeScan(scan);
 
    	doIt();
 

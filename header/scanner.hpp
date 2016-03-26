@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
+#include <vector>
 #include "typage.hpp"
 #include "tabSymbole.hpp"
 
@@ -20,12 +22,10 @@ typedef struct {
 } Scanner;
 
 ///////////////////////////////////////////////////
-enum Symbole_GPL {ENT, IDENT, SYMBOLE_S, SYMBOLE_C};
+enum Symbole_GPL {ENT, IDENT, SYMBOLE, NOTHING};
 
 typedef struct {
 	int code;
-	int action;
-	AtomType type;
 	Symbole_GPL symb;
 	std::string chaine;
 } Instance_GPL;//?????
@@ -33,6 +33,8 @@ typedef struct {
 typedef struct {
 	std::fstream * fs;
 	Instance_GPL * instance;
+	std::vector<std::string> *listeidents;
+	bool isident;
 } Scanner_GPL;
 ///////////////////////////////////////////////////
 
@@ -49,6 +51,9 @@ void lireMot(Scanner * s, type_tableSymbole & tabSymb);
 // void lireBlanc(Scanner * s);
 void afficheInstance(Instance * inst);
 
+void initScanGPL(Scanner_GPL * scan, std::string file);
+void closeScanGPL(Scanner_GPL * scan);
+bool itisanumber(std::string word);
 void lireMotGPL(Scanner_GPL * s, type_tableSymbole & tabSymb);
 // void afficheInstance_GPL(Instance_GPL * inst);
 
