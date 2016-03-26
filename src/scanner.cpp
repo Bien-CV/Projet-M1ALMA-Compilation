@@ -35,6 +35,13 @@ void lireMot(Scanner * scan, type_tableSymbole & tabSymb) {
    if(word[0] == '\''){ // c'est un terminal
     	scan->instance->code = 17;
     	scan->instance->type = TERMINAL;
+    	for(size_t i = 0; i < word.size(); i++) {
+    		if(word[i] != '\'') {
+    			temp += word[i];
+    		}
+    	}
+    	word = temp;
+    	temp = "";
    } else { // c'est un non terminal
     	if ( (numSymb = rechercheSymboleDansG0(word, tabSymb)) != -1 ) { //on l'a pas trouvé dans la table des symboles
     		scan->instance->code = numSymb;
@@ -51,7 +58,7 @@ void lireMot(Scanner * scan, type_tableSymbole & tabSymb) {
    //déterminer si symbole a une action
    if (word.find("#") != std::string::npos) {
    	if(scan->instance->type == TERMINAL) {
-   		scan->instance->chaine = word.substr(0, word.find("#")) + "'"; //substitu au split
+   		scan->instance->chaine = word.substr(0, word.find("#")) ; //substitu au split
 	 		temp = word.substr(word.find("#")+1,temp.size()-1);
 	 		//cout << " action detectée pour " << scan->instance->chaine << " , : " << temp << endl;
 	 		scan->instance->action = atoi(temp.c_str());
@@ -139,15 +146,19 @@ void lireMotGPL(Scanner_GPL * scan, type_tableSymbole & tabSymb) {
    			scan->instance->code = rechercheSymbole(word,tabSymb);
    		}
    }
+   afficheInstance_GPL(scan->instance);
 }
 
-// void afficheInstance_GPL(Instance_GPL * inst) {
-// 	cout << "Chaine : " << inst->chaine;
-// 	cout << "\t Code : " << inst->code;
-// 	cout << "\t Action : " << inst->action;
-// 	switch(inst->type) {
-// 		case TERMINAL : cout << "\t AtomType : TERMINAL" << endl;
-// 			break;
-// 		case NONTERMINAL : cout << "\t AtomType : NONTERMINAL" << endl;
-// 	}
-// }
+void afficheInstance_GPL(Instance_GPL * inst) {
+	cout << "Chaine : " << inst->chaine;
+	cout << "\t Code : " << inst->code;
+	switch(inst->symb) {
+		case ENT : cout << "\t AtomType : ENT" << endl;
+			break;
+		case SYMBOLE : cout << "\t AtomType : SYMBOLE" << endl;
+			break;
+		case NOTHING : cout << "\t AtomType : NOTHING" << endl;
+			break;
+		case IDENT : cout << "\t AtomType : IDENT" << endl;
+	}
+}

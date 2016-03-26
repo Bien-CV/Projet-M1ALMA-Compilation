@@ -106,7 +106,7 @@ bool analyse_GPL(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 	switch(p->classe) {
 		case CONC: {
 			Conc* pconc = (Conc*)p;
-			//cout<< " conc "  <<  endl;
+			cout<< " conc "  <<  endl;
 			if(analyse_GPL(s, G0, pconc->right, tabSymb, pileOP, IATAB, p_code)) {
 				//cout<< " conc gauche ok donc go droite" << endl;
 				analyseur_GLP = analyse_GPL(s, G0, pconc->left, tabSymb, pileOP, IATAB, p_code);
@@ -120,7 +120,7 @@ bool analyse_GPL(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 		}
 			break;
 		case UNION: {
-			//cout<< " union" << endl;
+			cout<< " union" << endl;
 			Union* punion = (Union*)p;
 			if(analyse_GPL(s, G0, punion->right, tabSymb, pileOP, IATAB, p_code)) {
 				//cout<< " union gauche ok pas de droite" << endl;
@@ -134,7 +134,7 @@ bool analyse_GPL(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 		}
 			break;
 		case STAR: {
-			//cout<< " star" << endl;
+			cout<< " star" << endl;
 			Star* pstar = (Star*)p;
 			analyseur_GLP = true;
 			while (analyse_GPL(s, G0, pstar->stare, tabSymb, pileOP, IATAB, p_code)) {
@@ -143,7 +143,7 @@ bool analyse_GPL(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 		}
 			break;
 		case UN: {
-			//cout<< " un" << endl;
+			cout<< " un" << endl;
 			Un* pun = (Un*)p;
 			analyseur_GLP = true;
 			analyse_GPL(s, G0, pun->une, tabSymb, pileOP, IATAB, p_code);
@@ -152,7 +152,7 @@ bool analyse_GPL(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 			break;
 		case ATOM: {
 			Atom* pa = (Atom*)p;
-			//cout<< " ATom" << endl;
+			cout<< " ATom" << pa->code << endl;
 
 			switch(pa->type) {
 				case TERMINAL: {
@@ -168,7 +168,7 @@ bool analyse_GPL(Scanner_GPL * s, std::map<int, Node*>& G0, Node* p, type_tableS
 						lireMotGPL(s, tabSymb);
 
 					} else {
-						//cout<< "je suis term, symb = " << s->instance->chaine << ", code mère:" << pa->code  << ", code gpl :" << s->instance->code << " differents" << endl;
+						cout<< "je suis term, symb = " << s->instance->chaine << ", code mère:" << pa->code  << ", code gpl :" << s->instance->code << " differents" << endl;
 						
 						analyseur_GLP = false;
 					}

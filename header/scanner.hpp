@@ -55,6 +55,6 @@ void initScanGPL(Scanner_GPL * scan, std::string file);
 void closeScanGPL(Scanner_GPL * scan);
 bool itisanumber(std::string word);
 void lireMotGPL(Scanner_GPL * s, type_tableSymbole & tabSymb);
-// void afficheInstance_GPL(Instance_GPL * inst);
+void afficheInstance_GPL(Instance_GPL * inst);
 
 #endif //SCANNER_HPP
