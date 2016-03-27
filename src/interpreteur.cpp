@@ -147,13 +147,13 @@ void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		}
 		break;
 		case 20: {//mult
-			pilex[spx - 1] = pilex[spx - 1] / pilex[spx];
+			pilex[spx - 1] = pilex[spx - 1] * pilex[spx];
             spx--;
             co++;
 		}
 		break;
 		case 21: {//div
-			pilex[spx - 1] = pilex[spx - 1] * pilex[spx];
+			pilex[spx - 1] = pilex[spx - 1] / pilex[spx];
             spx--;
             co++;
 		}
