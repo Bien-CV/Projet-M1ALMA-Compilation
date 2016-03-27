@@ -83,10 +83,86 @@ void g0_action(Atom *pa, AtomType type, int scanAction, std::map<int, Node*>& G0
 }
 
 void gpl_action( std::map<std::string, int>& IATAB, std::stack<int>& pileOP, std::vector<int>& p_code, std::string chaine, int action) {
-	// switch(action) {
-	// 	case 1: {
-			
-	// 	}
-	// }
+	switch (action) {
+    
+	    case 1: {//prep memoire
+        	IATAB[chaine] = IATAB.size();
+	    } 
+	    	break;
+	    
+	    case 2: {//lda
+        	p_code.push_back(1);
+        	p_code.push_back(IATAB[chaine]);
+	    } 
+	    	break;
+	    
+	    case 3: {//ldv
+        	p_code.push_back(2);
+        	p_code.push_back(IATAB[chaine]);
+	    } 
+	    	break;
+	    
+	    case 4: {//ldc
+        	p_code.push_back(3);
+        	p_code.push_back(atoi(chaine.c_str()));
+	    } 	
+	    	break;
+	    
+	    case 5: {//aff
+        	p_code.push_back(28);
+	    } 
+	    	break;
+	    
+	    case 6: {//add
+        	pileOP.push(18);
+	    } 
+	    	break;
+
+	    case 7: {//moins
+        	pileOP.push(19);
+	    } 
+	    	break;
+	    
+	    case 8: {//mult
+        	pileOP.push(20);
+	    } 
+	    	break;
+	    
+	    case 9: {//div
+        	pileOP.push(21);
+	    } 
+	    	break;
+	    
+	    case 10: {//ldv + depilement d'action
+        	p_code.push_back(2);
+        	p_code.push_back(IATAB[chaine]);
+        	p_code.push_back(pileOP.top());
+        	pileOP.pop();
+	    } 
+	    	break;
+	    
+	    case 11: {//ldc + depilement d'action
+        	p_code.push_back(3);
+        	p_code.push_back(atoi(chaine.c_str()));
+        	p_code.push_back(pileOP.top());
+        	pileOP.pop();
+	    } 
+	    	break;
+	    
+	    case 12: {//wrt
+        	pileOP.push(16);
+	    } 
+	    	break;
+	    
+	    case 13: {//wrtln
+        	pileOP.push(17);
+	    } 
+	    	break;
+	    
+	    case 14: {//stop
+        	p_code.push_back(29);
+	    } 
+	    	break;
+	}
 
 }

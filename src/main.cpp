@@ -80,10 +80,19 @@ int main() {
 		cout << "Pas OK" << endl;
 	}
 
+	cout << "*** Affichage du Pcode***" << endl;
+	for(size_t i = 0; i < p_code.size(); i++) {
+		cout << p_code[i] << endl;
+	}
+
+	cout << "*** Execution du Pcode" << endl;
+	exec(p_code, IATAB.size());
+
 	//libération de la mémoire allouée
    	closeScan(scan);
+   	closeScanGPL(scangpl);
 
-   	doIt();
+   	// doIt();
 
 	return 0;
 }

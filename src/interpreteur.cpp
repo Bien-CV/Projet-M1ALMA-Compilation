@@ -200,9 +200,10 @@ void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
 	//cout << pilex[0] << " , " << pilex[1] << " , " << pilex[2] << " et spx,co: " << spx << "," << co << endl;
 }
 
-void exec(P_code &pcode, Pilex &pilex) {
+void exec(P_code &pcode, int nbvar) {
 	int co = 0;
-	int spx = 3;
+	Pilex pilex(pcode.size(),0);
+	int spx = nbvar - 1;
 	while( pcode[co] != 29 ) {
 		// cout << pcode[co] << endl;
 		interpreter(pcode, pilex, co, spx);
@@ -242,6 +243,6 @@ void doIt() {
 	pcodetest.push_back(29);
   
 	cout << "debut de l'execution" << endl;
-	exec(pcodetest,pilextest);
+	// exec(pcodetest,pilextest);
 	cout << "fin de l'execution" << endl; 
 }
