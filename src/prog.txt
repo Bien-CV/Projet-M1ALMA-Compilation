@@ -12,6 +12,7 @@ varNo3 := varNo1 + varNo2 ;
 writeln varNo3 ;
 varNo4 := varNo3 * varNo3 ;
 writeln varNo4 ;
+if varNo4 <= varNo3 then writeln varNo3 else writeln varNo4 ;
 varNo5 := varNo4 / varNo1 ;
 writeln varNo5 ;
 varNo6 := varNo5 - varNo3 ;
