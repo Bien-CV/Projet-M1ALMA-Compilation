@@ -88,50 +88,50 @@ void gpl_action( std::map<std::string, int>& IATAB, std::stack<int>& pileOP, std
 	    case 1: {//prep memoire
         	IATAB[chaine] = IATAB.size();
 	    } 
-	    	break;
+		break;
 	    
 	    case 2: {//lda
         	p_code.push_back(1);
         	p_code.push_back(IATAB[chaine]);
 	    } 
-	    	break;
+		break;
 	    
 	    case 3: {//ldv
         	p_code.push_back(2);
         	p_code.push_back(IATAB[chaine]);
 	    } 
-	    	break;
+		break;
 	    
 	    case 4: {//ldc
         	p_code.push_back(3);
         	p_code.push_back(atoi(chaine.c_str()));
 	    } 	
-	    	break;
+		break;
 	    
 	    case 5: {//aff
         	p_code.push_back(28);
 	    } 
-	    	break;
+		break;
 	    
 	    case 6: {//add
         	pileOP.push(18);
 	    } 
-	    	break;
+		break;
 
 	    case 7: {//moins
         	pileOP.push(19);
 	    } 
-	    	break;
+		break;
 	    
 	    case 8: {//mult
         	pileOP.push(20);
 	    } 
-	    	break;
+		break;
 	    
 	    case 9: {//div
         	pileOP.push(21);
 	    } 
-	    	break;
+		break;
 	    
 	    case 10: {//ldv + depilement d'action
         	p_code.push_back(2);
@@ -139,7 +139,7 @@ void gpl_action( std::map<std::string, int>& IATAB, std::stack<int>& pileOP, std
         	p_code.push_back(pileOP.top());
         	pileOP.pop();
 	    } 
-	    	break;
+		break;
 	    
 	    case 11: {//ldc + depilement d'action
         	p_code.push_back(3);
@@ -147,22 +147,98 @@ void gpl_action( std::map<std::string, int>& IATAB, std::stack<int>& pileOP, std
         	p_code.push_back(pileOP.top());
         	pileOP.pop();
 	    } 
-	    	break;
+		break;
 	    
 	    case 12: {//wrt
         	pileOP.push(16);
 	    } 
-	    	break;
+		break;
 	    
 	    case 13: {//wrtln
         	pileOP.push(17);
 	    } 
-	    	break;
+		break;
 	    
 	    case 14: {//stop
         	p_code.push_back(29);
 	    } 
-	    	break;
+		break;
+	    
+	    case 15: {//or
+        	pileOP.push(26);
+	    } 
+		break;
+	    
+	    case 16: {//depile action
+        	p_code.push_back(pileOP.top());
+        	pileOP.pop();
+	    } 
+		break;
+	    
+	    case 17: {//and
+        	pileOP.push(25);
+	    } 
+		break;
+	    
+	    case 18: {//not
+        	pileOP.push(27);
+	    } 
+		break;
+	    
+	    case 19: {//empile ==
+        	pileOP.push(12);
+	    } 
+		break;
+	    
+	    case 20: {//empile >=
+        	pileOP.push(9);
+	    } 
+		break;
+	    
+	    case 21: {//empile <=
+        	pileOP.push(11);
+	    } 
+		break;
+	    
+	    case 22: {//empile !=
+        	pileOP.push(13);
+	    } 
+		break;
+	    
+	    case 23: {//empile >
+        	pileOP.push(8);
+	    } 
+		break;
+	    
+	    case 24: {//stop
+        	pileOP.push(10);
+	    } 
+		break;
+
+		case 25: {//jump if false
+        	int c0 = p_code.size()+1;
+        	p_code.push_back(5);
+        	pileOP.push(c0);
+        	p_code.push_back(-1);
+	    } 
+		break;
+
+		case 26: {//saut du else
+        	int c0 = p_code.size()-1;
+        	p_code.push_back(4);
+        	p_code[pileOP.top()] = c0+3;
+        	pileOP.pop();
+        	pileOP.push(c0 +2);
+        	p_code.push_back(-1);
+	    } 
+		break;
+
+		case 27: {//stop
+        	p_code[pileOP.top()] = p_code.size();
+        	pileOP.pop();
+	    } 
+		break;
+
 	}
 
 }
