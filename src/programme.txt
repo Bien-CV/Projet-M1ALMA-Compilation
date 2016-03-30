@@ -1,6 +1,13 @@
-Program somme
-var x ;
+Program Som
+var I ; S ; N ;
 Debut
-x := 2 ;
-writeln x ;
+N := 2 ;
+S := 0 ;
+I := 0 ;
+if N <= S then writeln N else writeln S endif ;
+while I <= N do
+S := S + I ;
+I := I + 1 ;
+endwhile ;
+writeln S ;
 Fin .
