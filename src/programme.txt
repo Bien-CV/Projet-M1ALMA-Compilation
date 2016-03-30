@@ -7,12 +7,10 @@ Debut
 N := 2 ;
 S := 0 ;
 I := 0 ;
-K := 1 ;
 if N <= S then writeln N else writeln S endif ;
 while I <= N do
 S := S + I ;
-I := I + K ;
-writeln I ;
+I := I + 1 ;
 endwhile ;
 writeln S ;
 Fin .

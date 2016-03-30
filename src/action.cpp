@@ -242,7 +242,7 @@ void gpl_action( std::map<std::string, int>& IATAB, std::stack<int>& pileOP, std
 
 		case 28: {//prep while
 			int c0 = p_code.size()-1;
-        	pileOP.push(c0);
+        	pileOP.push(c0 +1);
 
 	    } 
 		break;

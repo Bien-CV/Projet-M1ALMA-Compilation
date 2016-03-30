@@ -204,7 +204,7 @@ void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
 void exec(P_code &pcode, int nbvar) {
 	int co = 0;
 	Pilex pilex(pcode.size(),0);
-	int spx = nbvar - 1;
+	int spx = nbvar;
 	while( pcode[co] != 29 ) {
 		// cout << pcode[co] << endl;
 		interpreter(pcode, pilex, co, spx);

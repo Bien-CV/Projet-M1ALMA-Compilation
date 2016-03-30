@@ -61,7 +61,7 @@ int main() {
 
 	// Initialisation du scanner gpl
 	Scanner_GPL * scangpl = new Scanner_GPL;
-	initScanGPL(scangpl,"src/prog.txt");
+	initScanGPL(scangpl,"src/programme.txt");
 
 	// Lecture de la gpl
 	cout << "*** Scan du prog ***" << endl;
