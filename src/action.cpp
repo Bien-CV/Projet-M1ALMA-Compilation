@@ -253,6 +253,24 @@ void gpl_action( std::map<std::string, int>& IATAB, std::stack<int>& pileOP, std
 	    } 
 		break;
 
+		case 31: {//empile read
+        	pileOP.push(14);
+	    } 
+		break;
+	    
+	    case 32: {//empile readln
+        	pileOP.push(15);
+	    } 
+		break;
+
+		case 33: {//depile action read et prep val
+        	p_code.push_back(1);
+        	p_code.push_back(IATAB[chaine]);
+        	p_code.push_back(pileOP.top());
+        	pileOP.pop();
+	    } 
+		break;
+
 	}
 
 }

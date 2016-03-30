@@ -110,7 +110,8 @@ void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
 			string input;
             spx++;
             cin >> input;
-            pilex[spx] = atoi(input.c_str());
+            cout << pilex[spx];
+            pilex[pilex[spx-1]] = atoi(input.c_str());
             co++;
 		}
 		break;
@@ -119,7 +120,7 @@ void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
             spx++;
             cin >> input;
             cout << endl;
-            pilex[spx] = atoi(input.c_str());
+            pilex[pilex[spx-1]] = atoi(input.c_str());
             co++;
 		}
 		break;

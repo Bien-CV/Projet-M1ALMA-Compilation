@@ -2,15 +2,17 @@ Program Som
 var I ;
 var S ;
 var N ;
-var K ;
 Debut
-N := 2 ;
+readln N ;
 S := 0 ;
 I := 0 ;
 if N <= S then writeln N else writeln S endif ;
 while I <= N do
 S := S + I ;
 I := I + 1 ;
+writeln S ;
+writeln I ;
+writeln N ;
 endwhile ;
 writeln S ;
 Fin .
