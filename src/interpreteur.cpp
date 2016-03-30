@@ -3,7 +3,7 @@
 using namespace std;
 
 void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
-	std::cout << pcode[co] << endl;
+	// std::cout << pcode[co] << endl;
 	switch(pcode[co]) {
 		case 1: {//lda
 			spx = spx + 1;

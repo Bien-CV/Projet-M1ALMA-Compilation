@@ -216,26 +216,27 @@ void gpl_action( std::map<std::string, int>& IATAB, std::stack<int>& pileOP, std
 		break;
 
 		case 25: {//jump if false
-        	int c0 = p_code.size()+1;
+        	int c0 = p_code.size()-1;
         	p_code.push_back(5);
-        	pileOP.push(c0);
+        	pileOP.push(c0 +2);
         	p_code.push_back(-1);
+
 	    } 
 		break;
 
 		case 26: {//saut du else
+			p_code[pileOP.top()] = p_code.size();
+        	pileOP.pop();
+	    } 
+		break;
+
+		case 27: {//stop
         	int c0 = p_code.size()-1;
         	p_code.push_back(4);
         	p_code[pileOP.top()] = c0+3;
         	pileOP.pop();
         	pileOP.push(c0 +2);
         	p_code.push_back(-1);
-	    } 
-		break;
-
-		case 27: {//stop
-        	p_code[pileOP.top()] = p_code.size();
-        	pileOP.pop();
 	    } 
 		break;
 
