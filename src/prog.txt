@@ -1,18 +1,13 @@
-Program somme
-var varNo3 ;
-var varNo4 ;
-var varNo5 ;
-var varNo6 ;
-const varNo1 := 4 ;
-const varNo2 := 6 ;
+Program Som
+var I ; S ; N ;
 Debut
-varNo3 := varNo1 + varNo2 ;
-writeln varNo3 ;
-varNo4 := varNo3 * varNo3 ;
-writeln varNo4 ;
-if varNo4 <= varNo3 then writeln varNo3 else writeln varNo4 ;
-varNo5 := varNo4 / varNo1 ;
-writeln varNo5 ;
-varNo6 := varNo5 - varNo3 ;
-writeln varNo6 ;
+N := 2 ;
+S := 0 ;
+I := 0 ;
+if N <= S then writeln N else writeln S ;
+while I <= N do
+S := S + I ;
+I := I + 1 ;
+endwhile ;
+writeln S ;
 Fin .
