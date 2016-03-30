@@ -1,20 +1,6 @@
 #include "action.hpp"
 
-// using namespace std;
-
 type_pile pile;
-// type_dico dicoT, dicoNT;
-
-// int recherche(type_dico & dico, std::string symb) {
-// 	unsigned int i;
-// 	for (i = 0; i < dico.size(); ++i) {
-// 		if(dico[i] == code) {
-// 			return code;
-// 		}
-// 	}
-// 	dico.push_back(code);
-// 	return code;
-// }
 
 void empiler(type_pile & pile, Node * p) {
 	pile.push(p);
@@ -38,7 +24,9 @@ void g0_action(Atom *pa, AtomType type, int scanAction, std::map<int, Node*>& G0
 			t2 = depiler(pile);
 			Atom* p = (Atom*)t2;
 			G0[(p->code)] = t1;
+			std::cout << "************************** Arbre généré ***************************" << std::endl;
 			ImprimeArbre(G0[(p->code)],0);
+			std::cout << "*******************************************************************" << std::endl;
 		}
 			break;
 		case 2: {
