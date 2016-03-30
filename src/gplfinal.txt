@@ -12,4 +12,4 @@ PB -> ( 'ident#3' + 'entier#4' ) . OPREL . ( 'ident#10' + 'entier#11' ) ,
 OPREL -> '==#19' + '>=#20' + '<=#21' + '!=#22' + '>#23' + '<#24' ,
 If -> 'if' . Boolean#25 . 'then' . [ Inst ] . Else#26 . 'endif' . ';' ,
 Else -> (/ 'else#27' . Inst /) ,
-While -> 'while#28' . Boolean . 'do#29' . [ Inst ] . 'endwhile#30' . ';' ;
+While -> 'while#28' . Boolean . 'do#29' . Inst . 'endwhile#30' . ';' , ;

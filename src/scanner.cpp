@@ -105,7 +105,7 @@ void closeScanGPL(Scanner_GPL * scan) {
 
 bool itisanumber(std::string word){
 	int asciinb = int(word[0]);
-	return ((asciinb > 48) && (asciinb < 58));
+	return ((asciinb >= 48) && (asciinb < 58));
 }
 
 void lireMotGPL(Scanner_GPL * scan, type_tableSymbole & tabSymb) {
