@@ -3,7 +3,6 @@
 using namespace std;
 
 void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
-	// std::cout << pcode[co] << endl;
 	switch(pcode[co]) {
 		case 1: {//lda
 			spx = spx + 1;
@@ -38,11 +37,11 @@ void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		}
 		break;
 		case 6: {//jsr
-
+			cout << "jsr non implementé" << endl;
 		}
 		break;
 		case 7: {//rsr
-
+			cout << "rsr non implementé" << endl;
 		}
 		break;
 		case 8: {//sup
@@ -199,7 +198,6 @@ void interpreter(P_code &pcode, Pilex &pilex, int &co, int &spx) {
 		default: {cout << "non implementé" << endl;} break;
 			
 	}
-	//cout << pilex[0] << " , " << pilex[1] << " , " << pilex[2] << " et spx,co: " << spx << "," << co << endl;
 }
 
 void exec(P_code &pcode, int nbvar) {
@@ -207,44 +205,8 @@ void exec(P_code &pcode, int nbvar) {
 	Pilex pilex(pcode.size(),0);
 	int spx = nbvar;
 	while( pcode[co] != 29 ) {
-		// cout << pcode[co] << endl;
 		interpreter(pcode, pilex, co, spx);
 	}
 	cout << "ok" << endl;
 
-}
-
-void doIt() {
-	P_code pcodetest;
-	Pilex pilextest(7,0);//wut, 3 pas assez, il faut + pour prevoir les sauv de val
-	// pilextest.push_back(0);
-	// pilextest.push_back(0);
-	// pilextest.push_back(0);
-
-	pcodetest.push_back(1);
-	pcodetest.push_back(0);
-	pcodetest.push_back(3);
-	pcodetest.push_back(4);
-	pcodetest.push_back(28);
-	pcodetest.push_back(1);
-	pcodetest.push_back(1);
-	pcodetest.push_back(3);
-	pcodetest.push_back(1);
-	pcodetest.push_back(28);
-	pcodetest.push_back(1);
-	pcodetest.push_back(2);
-	pcodetest.push_back(2);
-	pcodetest.push_back(0);
-	pcodetest.push_back(2);
-	pcodetest.push_back(1);
-	pcodetest.push_back(18);
-	pcodetest.push_back(28);
-	pcodetest.push_back(2);
-	pcodetest.push_back(2);
-	pcodetest.push_back(17);
-	pcodetest.push_back(29);
-  
-	cout << "debut de l'execution" << endl;
-	// exec(pcodetest,pilextest);
-	cout << "fin de l'execution" << endl; 
 }

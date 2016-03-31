@@ -92,7 +92,5 @@ int main() {
    	closeScan(scan);
    	closeScanGPL(scangpl);
 
-   	// doIt();
-
 	return 0;
 }

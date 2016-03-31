@@ -58,7 +58,6 @@ int rechercheSymbole(string s, type_tableSymbole & tabSymb) {
 }
 
 int recherche_symb_ac_add(string s, type_tableSymbole & tabSymb) {
-	//if (tabSymb.find(s) != tabSymb.end()) {
 	int id = -1;
 	for (auto &it : tabSymb) {
 		if (it.second == s){

@@ -45,14 +45,10 @@ void lireMot(Scanner * scan, type_tableSymbole & tabSymb) {
    } else { // c'est un non terminal
     	if ( (numSymb = rechercheSymboleDansG0(word, tabSymb)) != -1 ) { //on l'a pas trouvé dans la table des symboles
     		scan->instance->code = numSymb;
-    		//scan->instance->action = 0;
     		scan->instance->type = NONTERMINAL;
-    		//scan->instance->chaine = word;
     	} else {
     		scan->instance->code = 18;
-    		//scan->instance->action = 0;
     		scan->instance->type = NONTERMINAL;
-    		//scan->instance->chaine = word;
     	}
    }
    //déterminer si symbole a une action
@@ -60,7 +56,6 @@ void lireMot(Scanner * scan, type_tableSymbole & tabSymb) {
    	if(scan->instance->type == TERMINAL) {
    		scan->instance->chaine = word.substr(0, word.find("#")) ; //substitu au split
 	 		temp = word.substr(word.find("#")+1,temp.size()-1);
-	 		//cout << " action detectée pour " << scan->instance->chaine << " , : " << temp << endl;
 	 		scan->instance->action = atoi(temp.c_str());
    	} else {
    		scan->instance->chaine = word.substr(0, word.find("#"));
