@@ -3,10 +3,10 @@ Projet de création d'un compilateur - M1ALMA
 
 Pour compiler : 
 -----------
-	*commande : make
+	commande : make
 	
 	
 Pour executer :
 -----------
-	*commande : ./compile
-	* ou ./compile > log.txt
+	commande : ./compile
+	ou ./compile > log.txt
